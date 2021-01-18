@@ -2,7 +2,7 @@ name: Test
 
 on:
   push:
-    branches: [main]
+    branches: [main,test]
   pull_request:
     branches: [main]
 
@@ -119,6 +119,7 @@ jobs:
         run: |
           $env:PKG_CONFIG_PATH="C:\cibw\vendor\lib\pkgconfig"
           pip install cython pytest
+          pip install -U setuptools pip
           pip install .
           pip install manim
           python setup.py sdist
@@ -140,6 +141,7 @@ jobs:
           $env:PATH="$env:PATH;C:\cibw\vendor\pkg-config\bin;C:\cibw\vendor\bin"
           $env:PKG_CONFIG_PATH="C:\cibw\vendor\lib\pkgconfig"
           pip install cython pytest manim
+          pip install -U setuptools pip
           pip install .
           python setup.py sdist
           python setup.py build_ext -i
